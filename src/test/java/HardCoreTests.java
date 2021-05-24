@@ -26,24 +26,24 @@ public class HardCoreTests {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("https://cloud.google.com/");
 
-        // Поиск "Google Cloud Platform Pricing Calculator"
+        // Search "Google Cloud Platform Pricing Calculator"
         WebElement searchinput = driver.findElement(By.xpath("/html/body//devsite-header//input"));
         searchinput.click();
         searchinput.sendKeys("Google Cloud Platform Pricing Calculator", Keys.ENTER);
         new WebDriverWait(driver, 10).until(ExpectedConditions.presenceOfElementLocated(By.xpath("//*[@class='gs-title']/b")));
 
-        // Переход на страницу калькулятора
+        // Open Google Calculator page
         WebElement searchCalculator = driver.findElement(By.xpath("//*[@class='gs-title']/b"));
         searchCalculator.click();
 
-        // Активируем раздел COMPUTE ENGINE вверху страницы
+        // Active COMPUTE ENGINE section at the top of the page
         driver.switchTo().frame(0);
         driver.switchTo().frame(0);
         WebElement findComputeEngine = driver.findElement(By.xpath("//md-tab-item[1]"));
         findComputeEngine.click();
         //  driver.findElement(By.xpath("//md-tab-item/div/div/div[contains(@class, 'name ng-binding') and contains(.,'Compute Engine')]")).click();
 
-        // Заполняем форму
+        // Fill out the form
         // Number of instances: 4
         WebElement instanceNumber = driver.findElement(By.xpath("//*[@id='input_66']"));
         instanceNumber.sendKeys("4");
